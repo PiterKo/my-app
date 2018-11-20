@@ -1,0 +1,38 @@
+<div class="example-container">
+  <form [formGroup]="user" (ngSubmit)="login()">
+  <mat-card>
+    <mat-card-header> 
+      <mat-card-title><h3>Login</h3></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="John" formControlName="username" />
+        <i matSuffix class="material-icons">account_circle</i>
+        <mat-hint>Type your username</mat-hint>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput placeholder="123password" formControlName="password" />
+        <i matSuffix class="material-icons">vpn_key</i>
+        <mat-hint>Type your secret password</mat-hint>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-checkbox formControlName="rememberMe">Remember me</mat-checkbox>
+    </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="submit" mat-raised-button color="primary">Login</button>
+      <a mat-raised-button color="accent" routerLink="" >Cancel</a>
+    </mat-card-actions>
+    <mat-divider></mat-divider><br>
+    <mat-card-subtitle>
+      For register on the {{siteService.title}} fallow this <a href="/register">link</a>.
+    </mat-card-subtitle>
+  </mat-card>
+  </form>
+</div>

@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+  <span>
+    {{siteService.title}}
+  </span>
+  <span class="spacer"></span>
+  <ul>
+    <li>
+      <button mat-button
+        matTooltip="Get some help">
+        <i class="material-icons">help</i>
+      </button>
+    </li>
+    <li>
+      <button mat-button 
+        matTooltip="Click to login"
+        routerLink="/login"
+        *ngIf="!authService.dekodedToken">
+        <i class="material-icons">lock</i>
+      </button>
+    </li>
+    <li>
+      <button mat-button 
+        matTooltip="Click to logout"
+        (click)="logout()"
+        routerLink=""
+        *ngIf="authService.dekodedToken">
+        <i class="material-icons">lock_open</i>
+      </button>
+    </li>
+  </ul>
+</mat-toolbar>
