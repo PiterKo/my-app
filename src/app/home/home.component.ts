@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { NewsService } from '../services/news.service';
+import { Article } from '../models/article';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,21 +9,25 @@ import { NewsService } from '../services/news.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  articles: any[];
+  articles: Article[];
 
-  constructor(private news: NewsService) { }
+  constructor(private news: NewsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.get();
+    this.route.data.subscribe(data => {
+      this.articles = data['articles'];
+    });
+    console.log(this.articles);
   }
 
-  get() {
-    this.news.get().subscribe((res: any) => {
-      console.log(res.articles);
-      this.articles = res.articles;
-    }, error => {
-      console.log(error);
-    });
-  }
+  // get() {
+  //   this.news.get().subscribe( res => {
+  //     // console.log(res);
+  //     this.articles = res;
+  //     console.log(this.articles);
+  //   }, error => {
+  //     console.log(error);
+  //   });
+  // }
 
 }

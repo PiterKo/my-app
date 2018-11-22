@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FooterComponent } from './footer/footer.component';
 import { NewsService } from './services/news.service';
+import { NewsResolver } from './resolvers/news.resolver';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -49,7 +50,8 @@ export function tokenGetter() {
   providers: [
     SiteService,
     AuthService,
-    NewsService
+    NewsService,
+    NewsResolver
   ],
   bootstrap: [AppComponent]
 })
